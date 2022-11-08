@@ -1,0 +1,7 @@
+pageobjects\HomePage.class
+pageobjects\LogInPage.class
+pageobjects\DestinationsPage.class
+tests\BaseTest.class
+tests\DestinationTest.class
+tests\LoginTest.class
+pageobjects\BasePage.class
