@@ -44,23 +44,38 @@ public class CreateTripPage extends BasePage{
 	private WebElement whoBtn;
 	@FindBy(css = ".sb-desktop__bar-items > div:nth-child(2)")
 	WebElement whenBtn;
-	// predefined way
-	@FindBy(css = ".search-date-periods button")
-	List<WebElement> date_periodsBtn;
-	@FindBy(css = ".slider-wrapper ")
-	WebElement slider_wrapper;
-	// manually way
-	@FindBy(css = ".flatpickr-months .flatpickr-month:nth-child(2) .numInputWrapper span.arrowUp")
-	WebElement arrowUp;
 	@FindBy(css = ".flatpickr-months .flatpickr-month .cur-month")
 	List<WebElement> current_month;
 	@FindBy(css = " .flatpickr-next-month")
-	WebElement next_month;
+	private WebElement next_month;
 	@FindBy(css = ".flatpickr-days > div:nth-child(1)")
 	List<WebElement> left_dayContainer;
 	@FindBy(css = ".flatpickr-days > div:nth-child(2)")
 	List<WebElement> right_dayContainer;
-	
+	@FindBy(css="[class=\"flatpickr-days\"] :nth-child(1) > [class=\"flatpickr-day \"]")
+	List<WebElement> leftDaysContainer;
+	@FindBy(css="[class=\"flatpickr-days\"] :nth-child(2) > [class=\"flatpickr-day \"]")
+	List<WebElement> rightDaysContainer;
+	@FindBy(css="[class=\"flatpickr-days\"] :nth-child(2) > [class=\"flatpickr-day inRange\"]")
+	List<WebElement> dayInRange;
+	@FindBy(css=".flatpickr-days > div:nth-child(2)")
+	private WebElement rightDays;
+	@FindBy(css="[class=\"btn-blue btn\"]")
+	private WebElement planTripBtn;
+	@FindBy(css=".sb-desktop__bar-items > div:nth-child(4)")
+	private WebElement howMuchBtn;
+	@FindBy(css=".sb-desktop__bar-items > div:nth-child(5)")
+	private WebElement whatBtn;
+	@FindBy(css="[class=\"btn-blue apply-filters-button btn\"]")
+	private WebElement showResultsBtn;
+	@FindBy(css="div.flatpickr-months > div:nth-child(2) > div")
+	private WebElement leftMonth;
+	@FindBy(css="div.flatpickr-months > div:nth-child(3) > div")
+	private WebElement rightMonth;
+	@FindBy(css="div.flatpickr-months > div:nth-child(2) > div > div > input")
+	private WebElement leftYear;
+	@FindBy(css="div.flatpickr-months > div:nth-child(3) > div > div > input")
+	private WebElement rightYear;
 	
 	
 	public CreateTripPage(WebDriver driver) {
@@ -78,7 +93,7 @@ public class CreateTripPage extends BasePage{
 		Actions actions = new Actions(driver); 
 		actions.clickAndHold(destinationField).moveToElement(destinationField2).sendKeys("a")
 		.sendKeys("m").sendKeys("s").build().perform();
-		sleep(1000);
+		sleep(2000);
 		actions.moveToElement(elementFromList).click(elementFromList).build().perform();
 		
 		
@@ -100,12 +115,13 @@ public class CreateTripPage extends BasePage{
 	
 	public void whoCome() {
 		sleep(3000);
+		waitForLoad(whoBtn);
 		Actions actions = new Actions(driver);
 		actions.click(whoBtn).build().perform();
 	}
 	
 	public void decreaseAge(String age) {
-		sleep(5000);
+		sleep(2000);
 		List<WebElement> list = driver.findElements(By.cssSelector(".parties-input__field"));
 			for (WebElement el : list) {
 				WebElement group = el.findElement(By.cssSelector(".parties-input__field-label"));
@@ -119,7 +135,7 @@ public class CreateTripPage extends BasePage{
 		
 	}
 	public void increaseAge(String age) {
-		sleep(5000);
+		sleep(2000);
 		List<WebElement> list = driver.findElements(By.cssSelector(".parties-input__field"));
 			for (WebElement el : list) {
 				WebElement group = el.findElement(By.cssSelector(".parties-input__field-label"));
@@ -133,95 +149,87 @@ public class CreateTripPage extends BasePage{
 		
 	}
 	
+	public void clickOnWhen() {
+		sleep(1500);
+		Actions actions = new Actions(driver);
+		actions.click(whenBtn).build().perform();
+		
+	}
 	
-	
-	public void set_flight_munually() {
-
-
-		DateEngine date = new DateEngine();
-	    int desireDay;
-	    int desireMonth;
-	    
-	 
-		do {
-			desireDay=date.setDesireDay();
-			desireMonth=date.setDesireMonth();
-			System.out.println(desireDay);
-			System.out.println(desireMonth);
-		}while(desireDay<=date.getCurrentDay() || desireMonth<=date.getCurrentMonth());
-		sleep(1000);
-	    Actions actions = new Actions(driver);
-	    actions.click(whenBtn).build().perform();
-	    sleep(600);
-	    
-	    
-	    boolean state=true;
-	    int counter=0;
-	    do {
-	    	for (WebElement el : current_month) {
-	    		
-				if(el.getText().equalsIgnoreCase(date.getMonths()[desireMonth-1])) {
-						state=false;
-					}
-				if(!el.getText().equalsIgnoreCase(date.getMonths()[desireMonth-1])) {
-						counter++;
-					}
-				if(counter==2) {
-					sleep(600);
-					click(next_month);
-					counter=0;
+	public void setStart(String day) {
+		sleep(1500);
+		click(next_month);
+		List<WebElement> list = leftDaysContainer;
+		for (WebElement el : list) {
+			//	System.out.println(el.getText());
+				if (getText(el).equalsIgnoreCase(day)) {
+					Actions actions = new Actions(driver); 
+					actions.moveToElement(el).clickAndHold(el).build().perform();
+					break;
 				}
 			}
-	    }while(state);
-	    
-		
-		 counter=0; //find the desire month and click on the desire day
-		 int to= 0;
-		 List<WebElement> currentContainer= null,currentContainer1 =  null;
-	    for (WebElement el : current_month) {
-    		
-			if(el.getText().equalsIgnoreCase(date.getMonths()[desireMonth-1])) {
-					switch(counter) {
-					case 0:
-						currentContainer=left_dayContainer;
-						break;
-					case 1:
-						currentContainer = right_dayContainer;
-						break;
-					}
-					for (WebElement day : currentContainer) {
-						if(day.getText().equalsIgnoreCase(String.valueOf(desireDay))) {
-							actions.moveToElement(day).click(day).build().perform();
-							sleep(1000);
-							System.out.println("wow");
-							break;
-						}
-					}
-					if(desireDay+date.getVacation_length()<=date.getMonthSize()) {
-						currentContainer=left_dayContainer; // because after click the right container pop to left(might be bug:functionality)
-						 to =desireDay+date.getVacation_length();
-					}
-					else {
-						currentContainer=right_dayContainer;
-						to = date.getVacation_length()-(date.getMonthSize()-desireDay);
-					}
-					for (WebElement day : currentContainer) {
-							if(day.getText().equalsIgnoreCase(String.valueOf(to))) {
-								actions.moveToElement(day).click(day).build().perform();
-								sleep(1000);
-								System.out.println("wow");
-								
-								break;
-							}
-						}
-					break;	
-					}
-
-	    	else {
-	    		counter++;
-	    	}
-	  }
 	}
+	public void setEnd(String day) {
+		sleep(3000);
+		List<WebElement> list = driver.findElements(By.cssSelector("[class=\"flatpickr-days\"] :nth-child(2) > [class=\"flatpickr-day endRange\"]"));
+		for (WebElement el : list) {
+			//	System.out.println(el.getText());
+				if (getText(el).equalsIgnoreCase(day)) {
+					Actions actions = new Actions(driver); 
+					actions.moveToElement(el).build().perform();
+					sleep(1000);
+					click(el);
+					break;
+				}
+			}
+		
+		
+		
+	}
+	
+	public void chooseDates( String day, String day2) {
+		click(next_month);
+		String month = getText(leftMonth); 
+		String month2 = getText(rightMonth);
+		String year = leftYear.getAttribute("value");
+		String year2 = rightYear.getAttribute("value");
+		String date = "[aria-label='" + month + " " + day + ", " + year + "']";
+		driver.findElement(By.cssSelector(date)).click();
+		String date2 = "[aria-label='" + month2 + " " + day2 + ", " + year2 + "']";
+		driver.findElement(By.cssSelector(date2)).click();
+		sleep(1500);
+		click(planTripBtn);
+	}
+	
+	public void chooseHowMuch(String name) {
+		sleep(1500);
+		click(howMuchBtn);
+		sleep(800);
+		List<WebElement> list = driver.findElements(By.cssSelector("div.search-budget-standards > button"));
+			for (WebElement el : list) {
+				if (getText(el).equalsIgnoreCase(name)) {
+					click(el);
+					break;
+				}
+			}
+		
+	}
+	
+	public void chooseWhat(String name) {
+		sleep(1500);
+		click(whatBtn);
+		sleep(800);
+		List<WebElement> list = driver.findElements(By.cssSelector("div.search-purpose > ul > li button > img"));
+		for (WebElement el : list) {
+			if (getText(el).equalsIgnoreCase(name)) {
+				click(el);
+				break;
+			}
+		}
+		click(showResultsBtn);
+	}
+	
+	
 	
 	
 }

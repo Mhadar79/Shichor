@@ -34,7 +34,7 @@ public class DestinationsPage extends BasePage{
 					break;
 				}
 				
-			}
+			}sleep(2000);
 	}
 	
 	public String destination() {

@@ -10,10 +10,10 @@ public class HomePage extends BasePage{
 	private WebElement closeWindow;
 	@FindBy(css="[class=\"nav-right__user-profile\"] [class=\"btn\"]")
 	private WebElement nameOfUser;
-	@FindBy(css="div.app-header__desktop > nav > div > a:nth-child(1)")
+	@FindBy(css=".app-header__desktop > nav > div > a:nth-child(1)")
 	private WebElement destinationsBtn;
-	@FindBy(css="[class=\"home-hero__button\"] [class=\"btn-blue btn btn-link\"]")
-	private WebElement startPlanBtn;
+	@FindBy(css="a.btn-blue-outlined.btn.btn-link")
+	private WebElement buildYourOwnTripBtn;
 	
 	
 	public HomePage(WebDriver driver) {
@@ -27,14 +27,17 @@ public class HomePage extends BasePage{
 	}
 	
 	public void clickOnDestinations() {
+		sleep(1500);
 		waitForLoad(destinationsBtn);
 		click(destinationsBtn);
 	}
 	
 	public void StartPlanBtn() {
 		sleep(1600);
-		waitForLoad(startPlanBtn);
-		click(startPlanBtn);
+		waitForLoad(buildYourOwnTripBtn);
+		click(buildYourOwnTripBtn);
 	}
+	
+	
 
 }

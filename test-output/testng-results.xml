@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-11-05T10:46:36 IST" name="Default suite" finished-at="2022-11-05T10:47:48 IST" duration-ms="71763">
+  <suite started-at="2022-11-28T19:12:41 IST" name="Default suite" finished-at="2022-11-28T19:13:12 IST" duration-ms="30169">
     <groups>
     </groups>
-    <test started-at="2022-11-05T10:46:36 IST" name="Default test" finished-at="2022-11-05T10:47:48 IST" duration-ms="71763">
-      <class name="tests.PlaningFlowTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:tests.PlaningFlowTest@640dc4c6]" started-at="2022-11-05T10:46:36 IST" name="setup" finished-at="2022-11-05T10:46:45 IST" duration-ms="9027" status="PASS">
+    <test started-at="2022-11-28T19:12:41 IST" name="Default test" finished-at="2022-11-28T19:13:12 IST" duration-ms="30169">
+      <class name="tests.DestinationTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.DestinationTest@453d496b]" started-at="2022-11-28T19:12:42 IST" name="setup" finished-at="2022-11-28T19:12:54 IST" duration-ms="12408" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="tc07_PlaningTest()[pri:0, instance:tests.PlaningFlowTest@640dc4c6]" started-at="2022-11-05T10:46:45 IST" name="tc07_PlaningTest" finished-at="2022-11-05T10:47:47 IST" duration-ms="62346" status="PASS">
+        <test-method signature="tc05_destinationTest()[pri:0, instance:tests.DestinationTest@453d496b]" started-at="2022-11-28T19:12:54 IST" name="tc05_destinationTest" finished-at="2022-11-28T19:13:09 IST" duration-ms="14616" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tc07_PlaningTest -->
-        <test-method is-config="true" signature="failedTest(org.testng.ITestResult)[pri:0, instance:tests.PlaningFlowTest@640dc4c6]" started-at="2022-11-05T10:47:47 IST" name="failedTest" finished-at="2022-11-05T10:47:48 IST" duration-ms="226" status="PASS">
+        </test-method> <!-- tc05_destinationTest -->
+        <test-method is-config="true" signature="failedTest(org.testng.ITestResult)[pri:0, instance:tests.DestinationTest@453d496b]" started-at="2022-11-28T19:13:09 IST" name="failedTest" finished-at="2022-11-28T19:13:09 IST" duration-ms="338" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=tc07_PlaningTest status=SUCCESS method=PlaningFlowTest.tc07_PlaningTest()[pri:0, instance:tests.PlaningFlowTest@640dc4c6] output={null}]]]>
+                <![CDATA[[TestResult name=tc05_destinationTest status=SUCCESS method=DestinationTest.tc05_destinationTest()[pri:0, instance:tests.DestinationTest@453d496b] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- failedTest -->
-      </class> <!-- tests.PlaningFlowTest -->
+        <test-method signature="tc06_destinationTest()[pri:0, instance:tests.DestinationTest@453d496b]" started-at="2022-11-28T19:13:09 IST" name="tc06_destinationTest" finished-at="2022-11-28T19:13:11 IST" duration-ms="2399" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tc06_destinationTest -->
+        <test-method is-config="true" signature="failedTest(org.testng.ITestResult)[pri:0, instance:tests.DestinationTest@453d496b]" started-at="2022-11-28T19:13:11 IST" name="failedTest" finished-at="2022-11-28T19:13:12 IST" duration-ms="227" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=tc06_destinationTest status=SUCCESS method=DestinationTest.tc06_destinationTest()[pri:0, instance:tests.DestinationTest@453d496b] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- failedTest -->
+      </class> <!-- tests.DestinationTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
