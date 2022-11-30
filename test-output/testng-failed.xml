@@ -10,6 +10,19 @@
           <include name="setup"/>
         </methods>
       </class> <!-- tests.DestinationTest -->
+      <class name="tests.PlaningFlowTest">
+        <methods>
+          <include name="tc09_planningTest"/>
+          <include name="tc13_planningTest"/>
+          <include name="tc10_planningTest"/>
+          <include name="failedTest"/>
+          <include name="tc12_planningTest"/>
+          <include name="tc11_planningTest"/>
+          <include name="tc15_PlanningTest"/>
+          <include name="tc14_planningTest"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- tests.PlaningFlowTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

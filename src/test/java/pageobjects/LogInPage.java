@@ -42,17 +42,7 @@ public class LogInPage extends BasePage{
 		
 	}
 	
-	public void login(String user, String password) throws AWTException, InterruptedException{
-		Robot robot = new Robot();
-		for (int i = 0; i < 4; i++) {
-			robot.keyPress(KeyEvent.VK_CONTROL);
-			robot.keyPress(KeyEvent.VK_SUBTRACT);
-			robot.keyRelease(KeyEvent.VK_SUBTRACT);
-			robot.keyRelease(KeyEvent.VK_CONTROL);
-		}
-		sleep(12000);
-		waitForLoad(closeWindow);
-		click(closeWindow);
+	public void login(String user, String password) {
 		waitForLoad(logInBtn);
 		click(logInBtn);
 		fillText(emailField, user);

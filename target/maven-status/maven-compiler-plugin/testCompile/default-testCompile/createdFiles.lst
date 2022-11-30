@@ -1,7 +1,13 @@
-pageobjects\HomePage.class
-pageobjects\LogInPage.class
-pageobjects\DestinationsPage.class
+pageobjects\CreateTripPage.class
 tests\BaseTest.class
-tests\DestinationTest.class
+tests\DateTest.class
+tests\PlaningFlowTest.class
 tests\LoginTest.class
 pageobjects\BasePage.class
+pageobjects\DateEngine.class
+pageobjects\HomePage.class
+pageobjects\PersonalizedPage.class
+pageobjects\LogInPage.class
+pageobjects\DestinationsPage.class
+pageobjects\MyTripPage.class
+tests\DestinationTest.class

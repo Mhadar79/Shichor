@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest{
 		Assert.assertEquals(actual, expected, "Error message is not valid");
 	}
 	@Test
-	public void tc03_login() throws AWTException, InterruptedException {
+	public void tc03_login() {
 		LogInPage lp = new LogInPage(driver);
 		lp.closeLogIn();
 		lp.login("mh18979@gmail.com", "dsfsdf");
@@ -37,7 +37,7 @@ public class LoginTest extends BaseTest{
 		Assert.assertEquals(actual, expected, "Error message is not valid");
 	}
 	@Test
-	public void tc04_login() throws AWTException, InterruptedException {
+	public void tc04_login() {
 		LogInPage lp = new LogInPage(driver);
 		lp.closeLogIn();
 		lp.login("mh18979@gmail.com", "M18h09#79");

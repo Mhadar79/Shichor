@@ -1,5 +1,8 @@
 package tests;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,17 +17,27 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageobjects.HomePage;
 
 public class BaseTest {
 WebDriver driver;
 	
 	@BeforeClass
-	public void setup() {
+	public void setup() throws AWTException {
 		ChromeOptions options = new ChromeOptions();
         options.addArguments("--ignore-certificate-errors");
 		driver = WebDriverManager.chromedriver().capabilities(options).avoidShutdownHook().create();
 		driver.manage().window().maximize();
 		driver.get("https://www.shichor.co.il/en");
+		Robot robot = new Robot();
+		for (int i = 0; i < 4; i++) {
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_SUBTRACT);
+			robot.keyRelease(KeyEvent.VK_SUBTRACT);
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+		}
+		HomePage hp = new HomePage(driver);
+		hp.closeWindow();
 	}
 	/*
 	 * This method will run after each test,

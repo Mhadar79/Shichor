@@ -21,6 +21,12 @@ public class HomePage extends BasePage{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public void closeWindow() {
+		sleep(12000);
+		waitForLoad(closeWindow);
+		click(closeWindow);
+	}
+	
 	public String getName() {
 		waitForLoad(nameOfUser);
 		return getText(nameOfUser);
